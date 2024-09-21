@@ -1,0 +1,17 @@
+version: '3.4'
+
+services:
+  main:
+    container_name: main
+    build:
+      context: .
+      dockerfile: Dockerfile/
+      target: development
+    command: npm run start:dev  
+    environment:
+      - PORT=${PORT}
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/usr/src/app
+      
