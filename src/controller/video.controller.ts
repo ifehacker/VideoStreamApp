@@ -15,6 +15,7 @@ import {
 } from '@nestjs/common';
 import { FileFieldsInterceptor } from '@nestjs/platform-express';
 import { Video } from 'src/model/video.schema';
+import { VideoService } from 'src/service/video.service';
 
 @Controller('/api/v1/video')
 export class VideoController {
@@ -44,7 +45,7 @@ export class VideoController {
   }
 
   @Get()
-  async read(@Query() id): Promise<Object> {
+  async read(@Query() id): Promise<object> {
     return await this.videoService.readVideo(id);
   }
 
@@ -61,7 +62,7 @@ export class VideoController {
 
   @Delete('/:id')
   async deleteVideo(@Res() response, @Param('id') id) {
-    await this.videoService.delete(id);
+    await this.videoService.deleteVideo(id);
     return response.status(HttpStatus.OK).json({ user: null });
   }
 }

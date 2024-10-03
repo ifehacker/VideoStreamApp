@@ -16,7 +16,7 @@ export class VideoService {
     @InjectModel(Video.name) private videoModel: Model<VideoDocument>,
   ) {}
 
-  async createVideo(video: Object): Promise<Video> {
+  async createVideo(video: object): Promise<Video> {
     const newVideo = new this.videoModel(video);
     return newVideo.save();
   }
@@ -65,11 +65,11 @@ export class VideoService {
       throw new ServiceUnavailableException();
     }
   }
-  async update(id, video: Video): Promise<Video> {
+  async updateVideo(id, video: Video): Promise<Video> {
     return await this.videoModel.findByIdAndUpdate(id, video, { new: true });
   }
 
-  async delete(id): Promise<any> {
+  async deleteVideo(id): Promise<any> {
     return await this.videoModel.findByIdAndDelete(id);
   }
 }
