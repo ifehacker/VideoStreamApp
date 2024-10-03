@@ -11,14 +11,15 @@ export class Video {
 
   @Prop()
   video: string;
+
   @Prop()
   coverImage: string;
 
   @Prop({ default: Date.now() })
-  createDate: Date;
+  uploadDate: Date;
 
   @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'User' })
-  uploadBy: User;
+  createdBy: User;
 }
 
 export const videoSchema = SchemaFactory.createForClass(Video);
